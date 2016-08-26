@@ -1,0 +1,132 @@
+body {
+    padding: 2em;
+}
+
+header.main {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #A1C651;
+}
+
+header.main h1 {
+    margin-bottom: 0; 
+}
+
+header.main p {
+    margin: 0; 
+}
+
+header.main p.description {
+    font-size: 1.1em; 
+}
+
+header .logo {
+    padding-right: 1em;
+}
+
+section.about {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-style: italic;
+    color: #666; 
+}
+
+.events .country-title {
+    margin-top: 2em;
+    margin-bottom: 1em;    
+}
+
+.events .country-title .ical {    
+    text-decoration: none;
+    font-weight: bold;  
+    font-size: 0.8em;
+    color: #999;  
+}
+
+.events .country-title .country {
+    display: inline;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.events h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.events span.date {
+    display: inline-block;
+    padding: 0.5em;    
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #A1C651;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.event {
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+}
+
+.event p {
+    margin: 0;
+}
+
+.event .main-date {
+    margin-right: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    background-color: rgba(161, 198, 81, 0.9);
+    color: white;
+}
+
+.event .main-date p {
+    margin: 0;
+    padding: 0;
+}
+
+.event .main-date .day {
+    padding: 0.5em;
+    background-color: rgb(141, 178, 61);
+}
+
+.event .main-date .dayn {
+    padding: 0;
+    font-size: 2.5em;
+}
+
+.event .main-date .month {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.event .main-date .year {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.event .date {
+    margin-bottom: 0.5em;
+}
+
+
+.event .address {
+    margin-bottom: 0.5em;
+}
+
+.event .links a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;  
+    color: #999;
+}
+
+footer {
+    border-top: 1px solid #DDD;
+    padding-top: 2em;
+    font-style: italic;
+}
