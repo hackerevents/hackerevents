@@ -1,4 +1,5 @@
-.swp
-.pyc
+*.swp
+*.pyc
 build/
 TODO
+test_build
