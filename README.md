@@ -6,6 +6,7 @@ The aim of this project is to provide:
 
 * A list of upcoming events about software.
 * A quick access to Call For Presentation pages.
+* Provide an ical feed of events for each country.
 
 
 #### Open to contribution
@@ -27,6 +28,8 @@ cfp: https://fosdem.org/2017/news/2016-07-20-call-for-participation/
 To name the file simply follow this convention.
 *start date*-*event name*.yml
 
-Example: 20170204-fosdem.yml
+Example: `20170204-fosdem.yml`
+
+The file is located at `events/belgium`
 
 Once your event added, the website will be rebuilt. 
