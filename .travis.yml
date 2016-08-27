@@ -1,0 +1,7 @@
+language: python
+python:
+  - "2.7"
+script:
+  - python build.py
+  - python build_test.py
+  - pep8 build.py
