@@ -1,5 +1,7 @@
 ### HackerEvents
 
+[![Build Status](https://travis-ci.org/frankrousseau/hackerevents.svg?branch=master)](https://travis-ci.org/frankrousseau/hackerevents)
+
 #### Goals
 
 The aim of this project is to provide:
