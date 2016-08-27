@@ -8,7 +8,7 @@ The aim of this project is to provide:
 
 * A list of upcoming events about software.
 * A quick access to Call For Presentation pages.
-* Provide an ical feed of events for each country.
+* An ical feed of events for each country.
 
 
 #### Open to contribution
