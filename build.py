@@ -19,6 +19,7 @@ def mkdir_p(path):
     except OSError as exc:
         pass
 
+
 # Copy a folder into the build directory.
 def add_to_build(main_folder, folder):
     build_folder = os.path.join(main_folder, 'build')
@@ -27,6 +28,7 @@ def add_to_build(main_folder, folder):
     src = os.path.join(main_folder, folder)
     dest = os.path.join(build_folder, folder)
     shutil.copytree(src, dest)
+
 
 # Shortcut for python file creation.
 def write_file(folder, file_name, content):
@@ -55,8 +57,8 @@ def get_event_from_file(folder, file):
     return event
 
 
-# Transform event files into a dictionnary that match a country name with a list
-# event dictionnary.
+# Transform event files into a dictionnary that match a country name with a
+# list event dictionnary.
 def get_events_from_folder(main_folder):
     events = {}
     event_folder = os.path.join(main_folder, 'events')
@@ -102,6 +104,7 @@ event_template = """<div class="w150p">
 <a href="$ical_url">ICAL</a> -
 <a href="http://www.openstreetmap.org/search?query=$address">MAP</a>"""
 
+
 def get_html_event(event):
     content = []
     start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
@@ -132,6 +135,7 @@ country_header_template = """<div class="country-section">
 <a href="ical/$country/$country.ical" class="ical">ICAL</a>
 </div>
 """
+
 
 def build_event_list(events):
     content = []
@@ -197,6 +201,7 @@ ical_footer_template = """END:VCALENDAR"""
 def get_ical_header(country):
     template = string.Template(ical_header_template)
     return template.substitute({'country': country})
+
 
 def get_ical_footer():
     return ical_footer_template
