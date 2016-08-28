@@ -2,6 +2,10 @@ body {
     padding: 2em;
 }
 
+a:hover {
+    color: #4a90e2;
+}
+
 header.main {
     padding-bottom: 1em;
     margin-bottom: 1em;
@@ -32,7 +36,7 @@ section.about {
 }
 
 .events .country-title {
-    margin-top: 2em;
+    margin-top: 4em;
     margin-bottom: 1em;    
 }
 
@@ -41,6 +45,10 @@ section.about {
     font-weight: bold;  
     font-size: 0.8em;
     color: #999;  
+}
+
+.events .country-title .ical:hover {    
+    color: #4a90e2;
 }
 
 .events .country-title .country {
@@ -64,6 +72,10 @@ section.about {
     font-size: 1.2em;
     font-weight: bold;
     color: white;
+}
+
+.country-section {
+    border-bottom: 1px solid #CCC
 }
 
 .event {
@@ -123,6 +135,10 @@ section.about {
     font-weight: bold;
     font-size: 0.9em;  
     color: #999;
+}
+
+.event .links a:hover {
+    color: #4a90e2;
 }
 
 footer {

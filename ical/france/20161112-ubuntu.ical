@@ -4,7 +4,7 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in france
 BEGIN:VEVENT
 UID: 20161112-ubuntu
-DTSTAMP:20160826T182514Z
+DTSTAMP:20160828T171054Z
 DTSTART:20161112T100000Z
 DTEND: 20161113T180000Z
 LOCATION: Cité des sciences et de l’industrie, Carrefour Numérique² - 30 Avenue Corentin Cariou, 75019 Paris
