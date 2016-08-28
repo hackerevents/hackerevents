@@ -75,6 +75,12 @@ def get_events_from_folder(main_folder):
                 event['country'] = country
                 events[country].append(event)
 
+            events[country] = sorted(
+                events[country],
+                key=lambda event: event['start'],
+                reverse=True
+            )
+
     return events
 
 
