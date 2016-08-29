@@ -3,11 +3,11 @@ VERSION:2.0
 PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in germany
 BEGIN:VEVENT
-UID: 20160916-nextcloud-conf
+UID: 20160921-pydata-berlin
 DTSTAMP:20160829T154450Z
-DTSTART:20160916T100000Z
-DTEND: 20160922T180000Z
-LOCATION: Technical University Berlin - Straße des 17. Juni 135 Berlin
-SUMMARY:Nextcloud Conferences
+DTSTART:20161121T190000Z
+DTEND: 20161121T220000Z
+LOCATION: GetYourGuide  - Erich-Weinert-Strasse 145c, 10409 Berlin
+SUMMARY:Pydata Berlin
 END:VEVENT
 END:VCALENDAR
