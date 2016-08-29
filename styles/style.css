@@ -28,6 +28,10 @@ header .logo {
     padding-right: 1em;
 }
 
+header .logo img {
+    max-width: 70px;
+}
+
 section.about {
     margin-top: 1em;
     margin-bottom: 2em;
@@ -59,7 +63,7 @@ section.about {
 
 .events h3 {
     font-size: 1.5em;
-    margin: 0;
+    margin: 0.5em 0 0 0;
 }
 
 .events span.date {
@@ -124,7 +128,6 @@ section.about {
 .event .date {
     margin-bottom: 0.5em;
 }
-
 
 .event .address {
     margin-bottom: 0.5em;

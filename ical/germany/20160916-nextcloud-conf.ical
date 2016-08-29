@@ -4,7 +4,7 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in germany
 BEGIN:VEVENT
 UID: 20160916-nextcloud-conf
-DTSTAMP:20160829T154450Z
+DTSTAMP:20160829T230116Z
 DTSTART:20160916T100000Z
 DTEND: 20160922T180000Z
 LOCATION: Technical University Berlin - Straße des 17. Juni 135 Berlin
