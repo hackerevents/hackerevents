@@ -73,7 +73,12 @@ def get_events_from_folder(main_folder):
             for file in files:
                 event = get_event_from_file(folder, file)
                 event['country'] = country
-                events[country].append(event)
+                end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
+                date = datetime.datetime.now().replace(
+                    hour=0, minute=0, second=0, microsecond=0)
+
+                if (end > date):
+                    events[country].append(event)
 
             events[country] = sorted(
                 events[country],
