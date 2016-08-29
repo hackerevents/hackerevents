@@ -1,8 +1,8 @@
-### HackerEvents
+## HackerEvents
 
 [![Build Status](https://travis-ci.org/frankrousseau/hackerevents.svg?branch=master)](https://travis-ci.org/frankrousseau/hackerevents)
 
-#### Goals
+### Goals
 
 The aim of this project is to provide:
 
@@ -11,7 +11,9 @@ The aim of this project is to provide:
 * An ical feed of events for each country.
 
 
-#### Open to contribution
+### Open to contribution
+
+#### Add an event
 
 Feel free to add your events to the website. For that you just have to add a file in the folder corresponding to the event country and open a PR accordingly.
 
@@ -27,11 +29,21 @@ link: https://fosdem.org/
 cfp: https://fosdem.org/2017/news/2016-07-20-call-for-participation/
 ```
 
-To name the file simply follow this convention.
-*start date*-*event name*.yml
+To name the file simply follow this convention: `*YYYYMMDD*-*event-name*.yml`
 
 Example: `20170204-fosdem.yml`
 
-The file is located at `events/belgium`
+The file is located at `events/belgium`.
 
 Once your event added, the website will be rebuilt. 
+
+#### Test your changes
+
+You can test your changes by building the website and open the generated index
+file:
+
+    python build.py
+    firefox index.html
+
+
+
