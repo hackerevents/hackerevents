@@ -13,7 +13,7 @@ The aim of this project is to provide:
 
 #### Open to contribution
 
-Feel free to add your events to the website. For that you just have to add a file in the folder corresponding to the event country.
+Feel free to add your events to the website. For that you just have to add a file in the folder corresponding to the event country and open a PR accordingly.
 
 The file format is pretty simple, see an example:
 
