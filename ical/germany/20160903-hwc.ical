@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in germany
 BEGIN:VEVENT
 UID: 20160903-hwc
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20160903T100000Z
 DTEND: 20160904T190000Z
 LOCATION: c-base - Rungestrasse 20, 10179 Berlin
 SUMMARY:Hacking With Care
+URL:https://hackingwithcare.in/2016/08/save-the-date-hacking-with-care-sessions-3-4-sept-2016-c-base-berlin/
 END:VEVENT
 END:VCALENDAR

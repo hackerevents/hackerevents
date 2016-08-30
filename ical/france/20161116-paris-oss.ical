@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in france
 BEGIN:VEVENT
 UID: 20161116-paris-oss
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20161116T090000Z
 DTEND: 20161117T180000Z
 LOCATION: Les Docks de Paris - Groupe Eurosites - Dock Pullman - 50 Avenue du Président Wilson, 93210 La Plaine Saint-Denis
 SUMMARY:Paris Open Source Summit
+URL:http://www.opensourcesummit.paris/
 END:VEVENT
 END:VCALENDAR

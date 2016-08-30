@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in france
 BEGIN:VEVENT
 UID: 20161126-codeurs-en-seine
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20161126T090000Z
 DTEND: 20161126T220000Z
 LOCATION: Université de Rouen - Avenue de l'Université 76800 Saint-Étienne-du-Rouvray
 SUMMARY:Codeurs en Seine
+URL:http://www.codeursenseine.com/2015/speakers.html
 END:VEVENT
 END:VCALENDAR

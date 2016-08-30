@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in france
 BEGIN:VEVENT
 UID: 20161005-docker
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20161005T190000Z
 DTEND: 20161005T220000Z
 LOCATION: Le Palais des Congres de Paris - 2 place Porte Maillot, 75017 Paris
 SUMMARY:Docker Paris
+URL:http://www.meetup.com/fr-FR/Docker-Paris/
 END:VEVENT
 END:VCALENDAR

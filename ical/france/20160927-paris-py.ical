@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in france
 BEGIN:VEVENT
 UID: 20160927-paris-py
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20160927T193000Z
 DTEND: 20160927T220000Z
 LOCATION: Drivy - 151 rue Saint Denis, 75002 Paris
 SUMMARY:Paris.py
+URL:http://www.meetup.com/fr-FR/Paris-py-Python-Django-friends/events/233465776/
 END:VEVENT
 END:VCALENDAR

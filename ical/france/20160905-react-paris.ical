@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in france
 BEGIN:VEVENT
 UID: 20160905-react-paris
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20160905T193000Z
 DTEND: 20160905T220000Z
 LOCATION: Ekino - 157 rue Anatole France, 92300 Levallois Perret
 SUMMARY:React.js Paris
+URL:http://www.meetup.com/fr-FR/ReactJS-Paris/events/233444546/
 END:VEVENT
 END:VCALENDAR

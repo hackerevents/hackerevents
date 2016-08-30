@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in germany
 BEGIN:VEVENT
 UID: 20161118-ubucon
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20161118T100000Z
 DTEND: 20161120T190000Z
 LOCATION: German Aerospace Center (DLR) - Linder Höhe 51147 Cologne
 SUMMARY:UbuCon
+URL:http://ubucon.org/en/events/ubucon-europe/
 END:VEVENT
 END:VCALENDAR

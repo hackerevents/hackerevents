@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in germany
 BEGIN:VEVENT
 UID: 20160921-pydata-berlin
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20161121T190000Z
 DTEND: 20161121T220000Z
 LOCATION: GetYourGuide  - Erich-Weinert-Strasse 145c, 10409 Berlin
 SUMMARY:Pydata Berlin
+URL:http://www.meetup.com/fr-FR/PyData-Berlin/events/233568821/
 END:VEVENT
 END:VCALENDAR

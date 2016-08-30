@@ -4,10 +4,11 @@ PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
 X-WR-CALNAME:Hacker Events in germany
 BEGIN:VEVENT
 UID: 20160917-rustfest
-DTSTAMP:20160829T230116Z
+DTSTAMP:20160830T152040Z
 DTSTART:20160917T190000Z
 DTEND: 20160918T220000Z
 LOCATION: Microsoft Atrium - Unter den Linden 17, begrüßt Berlin
 SUMMARY:RustFest
+URL:http://www.rustfest.eu/
 END:VEVENT
 END:VCALENDAR

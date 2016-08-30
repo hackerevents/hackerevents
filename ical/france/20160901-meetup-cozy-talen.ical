@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HackerEvents//NONSGML HackerMeetups Calendar//EN
+X-WR-CALNAME:Hacker Events in france
+BEGIN:VEVENT
+UID: 20160901-meetup-cozy-talen
+DTSTAMP:20160830T152040Z
+DTSTART:20160901T193000Z
+DTEND: 20170901T230000Z
+LOCATION: Talent.io - 13 rue d'Uzès, 75002 Paris
+SUMMARY:Meetup Cozy
+URL:http://www.meetup.com/fr-FR/Meetup-des-utilisateurs-de-Cozy-Cloud-en-France/events/233563003/
+END:VEVENT
+END:VCALENDAR
