@@ -52,7 +52,7 @@ class TestBuild(unittest.TestCase):
 
 
     def test_build_header(self):
-    	header = open(os.path.join(partial_folder, 'header.html')).read()
+        header = open(os.path.join(partial_folder, 'header.html')).read()
         self.assertEqual(build.build_header(partial_folder), header)
 
 
