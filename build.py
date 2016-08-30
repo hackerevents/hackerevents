@@ -204,6 +204,7 @@ DTSTART:$start_ical
 DTEND: $end_ical
 LOCATION: $place - $address
 SUMMARY:$name
+URL:$link
 END:VEVENT"""
 
 ical_footer_template = """END:VCALENDAR"""

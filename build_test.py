@@ -117,6 +117,7 @@ DTSTART:20170204T100000Z
 DTEND: 20170205T180000Z
 LOCATION: ULB - Avenue Franklin Roosevelt 50 1050 Bruxelles
 SUMMARY:FOSDEM' 17
+URL:https://fosdem.org/
 END:VEVENT''' % now.strftime(build.ICAL_DATE_FORMAT))
 
     def test_build_ical_files(self):
