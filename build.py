@@ -272,7 +272,7 @@ if __name__ == '__main__':
     except:
         pass
 
-    print "Start build..."
+    print("Start build...")
 
     events = get_events_from_folder(main_folder)
     build_index_page(main_folder, events)
@@ -281,4 +281,4 @@ if __name__ == '__main__':
     add_to_build(main_folder, 'styles')
     add_to_build(main_folder, 'assets')
 
-    print "Build finished."
+    print("Build finished.")
