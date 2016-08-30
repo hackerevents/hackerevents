@@ -30,7 +30,7 @@ def add_to_build(main_folder, folder):
     shutil.copytree(src, dest)
 
 
-# Shortcut for python file creation.
+# Shortcut for python file creation.
 def write_file(folder, file_name, content):
     mkdir_p(folder)
     file = open(os.path.join(folder, file_name), 'w')
@@ -38,7 +38,7 @@ def write_file(folder, file_name, content):
     file.close()
 
 
-# File data extraction
+# File data extraction
 
 
 # Transform event file into a dictionary.
@@ -67,7 +67,7 @@ def get_events_from_folder(main_folder):
 
         if folder is not event_folder:
             country = os.path.basename(folder)
-            if not country in events:
+            if country not in events:
                 events[country] = []
 
             for file in files:
@@ -204,6 +204,7 @@ DTSTART:$start_ical
 DTEND: $end_ical
 LOCATION: $place - $address
 SUMMARY:$name
+URL:$link
 END:VEVENT"""
 
 ical_footer_template = """END:VCALENDAR"""
@@ -272,7 +273,7 @@ if __name__ == '__main__':
     except:
         pass
 
-    print "Start build..."
+    print("Start build...")
 
     events = get_events_from_folder(main_folder)
     build_index_page(main_folder, events)
@@ -281,4 +282,4 @@ if __name__ == '__main__':
     add_to_build(main_folder, 'styles')
     add_to_build(main_folder, 'assets')
 
-    print "Build finished."
+    print("Build finished.")

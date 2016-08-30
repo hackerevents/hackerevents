@@ -33,8 +33,7 @@ class TestBuild(unittest.TestCase):
     def test_get_events_from_folder(self):
         base_folder = os.path.join(main_folder, 'fixtures')
         events = build.get_events_from_folder(base_folder)
-        countries = events.keys()
-        countries.sort()
+        countries = sorted(events.keys())
         self.assertEqual(['belgium', 'france', 'germany'], countries)
 
         event = events['belgium'][0]
@@ -52,7 +51,7 @@ class TestBuild(unittest.TestCase):
 
 
     def test_build_header(self):
-    	header = open(os.path.join(partial_folder, 'header.html')).read()
+        header = open(os.path.join(partial_folder, 'header.html')).read()
         self.assertEqual(build.build_header(partial_folder), header)
 
 
@@ -110,13 +109,14 @@ X-WR-CALNAME:Hacker Events in belgium""")
         event = build.get_event_from_file(folder, '20170204-fosdem.yml')
         event['country'] = 'belgium'
         now = datetime.datetime.now()
-        self.assertEquals(build.get_ical_event(event, now), '''BEGIN:VEVENT
+        self.assertEqual(build.get_ical_event(event, now), '''BEGIN:VEVENT
 UID: 20170204-fosdem
 DTSTAMP:%s
 DTSTART:20170204T100000Z
 DTEND: 20170205T180000Z
 LOCATION: ULB - Avenue Franklin Roosevelt 50 1050 Bruxelles
 SUMMARY:FOSDEM' 17
+URL:https://fosdem.org/
 END:VEVENT''' % now.strftime(build.ICAL_DATE_FORMAT))
 
     def test_build_ical_files(self):
