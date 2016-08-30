@@ -30,7 +30,7 @@ def add_to_build(main_folder, folder):
     shutil.copytree(src, dest)
 
 
-# Shortcut for python file creation.
+# Shortcut for python file creation.
 def write_file(folder, file_name, content):
     mkdir_p(folder)
     file = open(os.path.join(folder, file_name), 'w')
@@ -38,7 +38,7 @@ def write_file(folder, file_name, content):
     file.close()
 
 
-# File data extraction
+# File data extraction
 
 
 # Transform event file into a dictionary.
