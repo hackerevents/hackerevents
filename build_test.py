@@ -33,8 +33,7 @@ class TestBuild(unittest.TestCase):
     def test_get_events_from_folder(self):
         base_folder = os.path.join(main_folder, 'fixtures')
         events = build.get_events_from_folder(base_folder)
-        countries = events.keys()
-        countries.sort()
+        countries = sorted(events.keys())
         self.assertEqual(['belgium', 'france', 'germany'], countries)
 
         event = events['belgium'][0]
@@ -110,7 +109,7 @@ X-WR-CALNAME:Hacker Events in belgium""")
         event = build.get_event_from_file(folder, '20170204-fosdem.yml')
         event['country'] = 'belgium'
         now = datetime.datetime.now()
-        self.assertEquals(build.get_ical_event(event, now), '''BEGIN:VEVENT
+        self.assertEqual(build.get_ical_event(event, now), '''BEGIN:VEVENT
 UID: 20170204-fosdem
 DTSTAMP:%s
 DTSTART:20170204T100000Z
