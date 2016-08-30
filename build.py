@@ -67,7 +67,7 @@ def get_events_from_folder(main_folder):
 
         if folder is not event_folder:
             country = os.path.basename(folder)
-            if not country in events:
+            if country not in events:
                 events[country] = []
 
             for file in files:
