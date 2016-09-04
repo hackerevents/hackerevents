@@ -9,6 +9,7 @@ import datetime
 
 DATE_FORMAT = '%Y-%m-%d-%H:%M:%S'
 ICAL_DATE_FORMAT = '%Y%m%dT%H%M%SZ'
+ATOM_DATE_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 
 # Helpers
 
@@ -260,6 +261,90 @@ def build_ical_files(main_folder, events):
         all_content.append(get_ical_footer())
         write_file(country_folder, "%s.ical" % country.lower(), all_content)
 
+# Atom rendering
+
+atom_header_template = """<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>$title</title>
+  <link
+    href="$feed_url"
+    rel="self" type="application/atom+xml"
+  />
+  <link
+    href="$site_url"
+    rel="alternate" type="application/xhtml+xml"
+  />
+  <id>$atom_id</id>
+  <updated>$updated</updated>
+  <author>
+    <name>Hacker Events</name>
+  </author>
+"""
+
+atom_entry_template = """
+  <entry>
+    <title>$name</title>
+    <id>$atom_id</id>
+    <published>$atom_published</published>
+    <updated>$atom_updated</updated>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <h2>From $start_render to $end_render</h2>
+        <p>$place<br />$address_render<br />$country</p>
+        <p>
+            <a href="$link">URL</a> -
+            <a href="$ical_url">ICAL</a> -
+            <a href="http://www.openstreetmap.org/search?query=$address">MAP</a>
+        </p>
+      </div>
+    </content>
+  </entry>
+"""
+
+atom_footer = "</feed>"
+
+def get_atom_id(date, fragment):
+    domain = 'hackerevents.org'
+    date = date.strftime('%Y-%m-%d')
+    return "tag:%s,%s:%s" % (domain, date, fragment)
+
+def get_atom_header():
+    template = string.Template(atom_header_template)
+    date = datetime.datetime.utcnow()
+    updated = date.strftime(ATOM_DATE_FORMAT)
+    return template.substitute({
+        'title': 'Hacker Events',
+        'feed_url': 'https://www.hackerevents.org/feed.atom',
+        'site_url': 'https://www.hackerevents.org',
+        'atom_id': get_atom_id(date, 'atomfeed'),
+        'updated': updated,
+    })
+
+def get_atom_entry(event):
+    start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
+    fragment = '-'.join(event['uid'].split('-')[1:])
+    event['atom_id'] = get_atom_id(start, fragment)
+    # TODO: use the right date here, not start
+    event['atom_published'] = start.strftime(ATOM_DATE_FORMAT)
+    event['atom_updated'] = start.strftime(ATOM_DATE_FORMAT)
+    return string.Template(atom_entry_template).substitute(event)
+
+def get_atom_body(events):
+    atom_events = [ x for l in events.values() for x in l ]
+    atom_events.sort(key=lambda x: x['start'])
+    content = [ get_atom_entry(x) for x in atom_events]
+    return '\n'.join(content)
+
+def build_atom_feed(main_folder, events):
+    content = []
+    build_folder = os.path.join(main_folder, 'build')
+
+    content.append(get_atom_header())
+    content.append(get_atom_body(events))
+    content.append(atom_footer)
+
+    mkdir_p(build_folder)
+    write_file(build_folder, 'feed.atom', content)
 
 # Main script
 
@@ -278,6 +363,7 @@ if __name__ == '__main__':
     events = get_events_from_folder(main_folder)
     build_index_page(main_folder, events)
     build_ical_files(main_folder, events)
+    build_atom_feed(main_folder, events)
 
     add_to_build(main_folder, 'styles')
     add_to_build(main_folder, 'assets')
