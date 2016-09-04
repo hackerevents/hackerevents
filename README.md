@@ -43,7 +43,7 @@ You can test your changes by building the website and open the generated index
 file:
 
     python build.py
-    firefox index.html
+    firefox build/index.html
 
 
 
