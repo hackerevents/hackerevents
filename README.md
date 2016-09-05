@@ -11,9 +11,11 @@ The aim of this project is to provide:
 * An ical feed of events for each country.
 
 I started this project because I was tired to visit many websites to have basic
-information about the event I was interested in.
+information about the event I was interested in. I hope it will be useful to
+you. My goal is to make it a website maintained by a community, so feel free to
+participate!
 
-### Open to contribution
+### How to contribute
 
 #### Add an event
 
