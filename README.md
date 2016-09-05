@@ -10,6 +10,8 @@ The aim of this project is to provide:
 * A quick access to Call For Presentation pages.
 * An ical feed of events for each country.
 
+I started this project because I was tired to visit many websites to have basic
+information about the event I was interested in.
 
 ### Open to contribution
 
@@ -46,4 +48,18 @@ file:
     firefox build/index.html
 
 
+### Contributors
 
+#### Code
+
+* Nicolas (@nikaro)
+
+#### Events
+
+* Bryan (@chreekat)
+* Shaiou (@Shaiou)
+* Pierre (@pierrevdk)
+
+### Image credits
+
+Logo made by LSE Design: https://www.iconfinder.com/lsedesigns
