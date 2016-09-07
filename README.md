@@ -54,6 +54,7 @@ file:
 
 #### Code
 
+* Frank (@frankrousseau)
 * Nicolas (@nikaro)
 
 #### Events
