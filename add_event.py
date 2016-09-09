@@ -50,7 +50,8 @@ if __name__ == '__main__':
     else:
         name = args.name
         start = args.start
-        Path = get_file_path(country, start, name)
+        country = args.country
+        path = get_file_path(country, start, name)
         content =  get_file_content(start, name)
 
         event_file = open(path, "w")
