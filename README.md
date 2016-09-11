@@ -56,6 +56,7 @@ file:
 
 * Frank (@frankrousseau)
 * Nicolas (@nikaro)
+* Pierre (@catwell)
 
 #### Events
 
