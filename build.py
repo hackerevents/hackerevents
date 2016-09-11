@@ -322,11 +322,11 @@ def get_atom_header():
 
 def get_atom_entry(event):
     start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
+    added = datetime.datetime.strptime(event['added'], DATE_FORMAT)
     fragment = '-'.join(event['uid'].split('-')[1:])
     event['atom_id'] = get_atom_id(start, fragment)
-    # TODO: use the right date here, not start
-    event['atom_published'] = start.strftime(ATOM_DATE_FORMAT)
-    event['atom_updated'] = start.strftime(ATOM_DATE_FORMAT)
+    event['atom_published'] = added.strftime(ATOM_DATE_FORMAT)
+    event['atom_updated'] = added.strftime(ATOM_DATE_FORMAT)
     return string.Template(atom_entry_template).substitute(event)
 
 def get_atom_body(events):
