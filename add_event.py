@@ -3,6 +3,10 @@
 
 import argparse
 import re
+import datetime
+
+
+DATE_ADDED_FORMAT = "%Y-%m-%d-%H:%M:00"
 
 
 def get_file_name(start, name):
@@ -19,13 +23,15 @@ def get_file_path(country, start, name):
 
 
 def get_file_content(start, name):
+    date_added = datetime.datetime.now()
     return """name: %s
 start: %s
 end: %s
+added: %s
 place:
 address:
 link:
-cfp:""" % (name, start, start)
+cfp:""" % (name, start, start, date_added.strftime(DATE_ADDED_FORMAT))
 
 
 if __name__ == '__main__':
@@ -60,4 +66,3 @@ if __name__ == '__main__':
 
         print "File created at path:"
         print path
-
