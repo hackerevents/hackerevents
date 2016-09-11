@@ -14,7 +14,6 @@ build_folder = os.path.join(main_folder, 'test_build')
 
 class TestBuild(unittest.TestCase):
 
-
     def test_get_events_from_file(self):
         folder = os.path.join(event_folder, 'belgium')
         event = build.get_event_from_file(folder, '20170204-fosdem.yml')
@@ -22,13 +21,14 @@ class TestBuild(unittest.TestCase):
         self.assertEqual(event['start'], "2017-02-04-10:00:00")
         self.assertEqual(event['end'], "2017-02-05-18:00:00")
         self.assertEqual(event['place'], 'ULB')
-        self.assertEqual(event['address'],
+        self.assertEqual(
+            event['address'],
             'Avenue Franklin Roosevelt 50 1050 Bruxelles')
         self.assertEqual(event['link'], "https://fosdem.org/")
-        self.assertEqual(event['cfp'], \
+        self.assertEqual(
+            event['cfp'],
             "https://fosdem.org/2017/news/2016-07-20-call-for-participation/")
         self.assertEqual(event['file_name'], '20170204-fosdem')
-
 
     def test_get_events_from_folder(self):
         base_folder = os.path.join(main_folder, 'fixtures')
@@ -41,24 +41,23 @@ class TestBuild(unittest.TestCase):
         self.assertEqual(event['start'], "2017-02-04-10:00:00")
         self.assertEqual(event['end'], "2017-02-05-18:00:00")
         self.assertEqual(event['place'], 'ULB')
-        self.assertEqual(event['address'],
+        self.assertEqual(
+            event['address'],
             'Avenue Franklin Roosevelt 50 1050 Bruxelles')
         self.assertEqual(event['link'], "https://fosdem.org/")
-        self.assertEqual(event['cfp'], \
+        self.assertEqual(
+            event['cfp'],
             "https://fosdem.org/2017/news/2016-07-20-call-for-participation/")
         self.assertEqual(event['file_name'], '20170204-fosdem')
         self.assertEqual(event['country'], 'belgium')
-
 
     def test_build_header(self):
         header = open(os.path.join(partial_folder, 'header.html')).read()
         self.assertEqual(build.build_header(partial_folder), header)
 
-
     def test_build_footer(self):
         header = open(os.path.join(partial_folder, 'footer.html')).read()
         self.assertEqual(build.build_footer(partial_folder), header)
-
 
     def test_write_file(self):
         build.write_file(build_folder, 'test.txt', ['test content'])

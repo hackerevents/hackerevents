@@ -58,7 +58,7 @@ if __name__ == '__main__':
         start = args.start
         country = args.country
         path = get_file_path(country, start, name)
-        content =  get_file_content(start, name)
+        content = get_file_content(start, name)
 
         event_file = open(path, "w")
         event_file.write(content)

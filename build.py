@@ -292,9 +292,9 @@ atom_entry_template = """
         <h2>From $start_render to $end_render</h2>
         <p>$place<br />$address_render<br />$country</p>
         <p>
-            <a href="$link">URL</a> -
-            <a href="$ical_url">ICAL</a> -
-            <a href="http://www.openstreetmap.org/search?query=$address">MAP</a>
+          <a href="$link">URL</a> -
+          <a href="$ical_url">ICAL</a> -
+          <a href="http://www.openstreetmap.org/search?query=$address">MAP</a>
         </p>
       </div>
     </content>
@@ -303,10 +303,12 @@ atom_entry_template = """
 
 atom_footer = "</feed>"
 
+
 def get_atom_id(date, fragment):
     domain = 'hackerevents.org'
     date = date.strftime('%Y-%m-%d')
     return "tag:%s,%s:%s" % (domain, date, fragment)
+
 
 def get_atom_header():
     template = string.Template(atom_header_template)
@@ -320,6 +322,7 @@ def get_atom_header():
         'updated': updated,
     })
 
+
 def get_atom_entry(event):
     start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
     added = datetime.datetime.strptime(event['added'], DATE_FORMAT)
@@ -329,11 +332,13 @@ def get_atom_entry(event):
     event['atom_updated'] = added.strftime(ATOM_DATE_FORMAT)
     return string.Template(atom_entry_template).substitute(event)
 
+
 def get_atom_body(events):
-    atom_events = [ x for l in events.values() for x in l ]
+    atom_events = [x for l in events.values() for x in l]
     atom_events.sort(key=lambda x: x['start'])
-    content = [ get_atom_entry(x) for x in atom_events]
+    content = [get_atom_entry(x) for x in atom_events]
     return '\n'.join(content)
+
 
 def build_atom_feed(main_folder, events):
     content = []
@@ -345,6 +350,7 @@ def build_atom_feed(main_folder, events):
 
     mkdir_p(build_folder)
     write_file(build_folder, 'feed.atom', content)
+
 
 # Main script
 

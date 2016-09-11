@@ -41,4 +41,3 @@ cfp:""" % date_added.strftime(add_event.DATE_ADDED_FORMAT))
 
 if __name__ == '__main__':
     unittest.main()
-
