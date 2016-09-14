@@ -335,7 +335,7 @@ def get_atom_entry(event):
 
 def get_atom_body(events):
     atom_events = [x for l in events.values() for x in l]
-    atom_events.sort(key=lambda x: x['start'])
+    atom_events.sort(key=lambda x: x['added'], reverse=True)
     content = [get_atom_entry(x) for x in atom_events]
     return '\n'.join(content)
 
