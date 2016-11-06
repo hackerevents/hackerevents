@@ -44,7 +44,7 @@ Once your event added, the website will be rebuilt.
 
 #### Test your changes
 
-You can test your changes by pbuilding the website and open the generated index
+You can test your changes by building the website and open the generated index
 file:
 
     python build.py
