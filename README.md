@@ -21,12 +21,13 @@ participate!
 
 Feel free to add your events to the website. For that you just have to add a file in the folder corresponding to the event country and open a PR accordingly.
 
-The file format is pretty simple, see an example:
+The file format is pretty simple, see an example (all fields are required except `cfp`):
 
 ```yaml
 name: FOSDEM' 17
 start: 2017-02-04-10:00:00
 end: 2017-02-05-18:00:00
+added: 2016-08-01-00:00:00
 place: ULB
 address: Avenue Franklin Roosevelt 50 1050 Bruxelles
 link: https://fosdem.org/
@@ -43,7 +44,7 @@ Once your event added, the website will be rebuilt.
 
 #### Test your changes
 
-You can test your changes by building the website and open the generated index
+You can test your changes by pbuilding the website and open the generated index
 file:
 
     python build.py
