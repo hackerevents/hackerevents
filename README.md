@@ -61,6 +61,7 @@ file:
 #### Events
 
 * Bryan (@chreekat)
+* Emmanuel (@ehsavoie)
 * Shaiou (@Shaiou)
 * Pierre (@pierrevdk)
 
