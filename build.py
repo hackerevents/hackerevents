@@ -71,7 +71,7 @@ def get_events_from_folder(main_folder):
             if country not in events:
                 events[country] = []
 
-            for file in files:
+            for file in filter(lambda file: file[-4:] == '.yml', files):
                 event = get_event_from_file(folder, file)
                 event['country'] = country
                 end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
