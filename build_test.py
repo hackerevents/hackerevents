@@ -34,7 +34,7 @@ class TestBuild(unittest.TestCase):
         base_folder = os.path.join(main_folder, 'fixtures')
         events = build.get_events_from_folder(base_folder)
         countries = sorted(events.keys())
-        self.assertEqual(['belgium', 'france', 'germany'], countries)
+        self.assertEqual(['belgium', 'china', 'france', 'germany'], countries)
 
         event = events['belgium'][0]
         self.assertEqual(event['name'], "FOSDEM' 17")
@@ -88,7 +88,6 @@ class TestBuild(unittest.TestCase):
 </p></div></div>""")
 
     def test_build_event_list(self):
-
         pass
 
     def test_build_index_page(self):

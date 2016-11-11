@@ -164,16 +164,17 @@ def build_event_list(events):
     content.append('</header>')
     for country in countries:
 
-        template = string.Template(country_header_template)
-        content.append(template.substitute({
-            'country': country,
-            'country_capitalize': country.capitalize(),
-        }))
+        if len(events[country]) > 0:
+            template = string.Template(country_header_template)
+            content.append(template.substitute({
+                'country': country,
+                'country_capitalize': country.capitalize(),
+            }))
 
-        for event in reversed(events[country]):
-            content.append(get_html_event(event))
+            for event in reversed(events[country]):
+                content.append(get_html_event(event))
 
-        content.append('</div>')
+            content.append('</div>')
 
     return '\n'.join(content)
 
