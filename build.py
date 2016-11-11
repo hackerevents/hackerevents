@@ -71,7 +71,7 @@ def get_events_from_folder(main_folder):
             if country not in events:
                 events[country] = []
 
-            for file in files:
+            for file in filter(lambda file: file[-4:] == '.yml', files):
                 event = get_event_from_file(folder, file)
                 event['country'] = country
                 end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
@@ -164,16 +164,17 @@ def build_event_list(events):
     content.append('</header>')
     for country in countries:
 
-        template = string.Template(country_header_template)
-        content.append(template.substitute({
-            'country': country,
-            'country_capitalize': country.capitalize(),
-        }))
+        if len(events[country]) > 0:
+            template = string.Template(country_header_template)
+            content.append(template.substitute({
+                'country': country,
+                'country_capitalize': country.capitalize(),
+            }))
 
-        for event in reversed(events[country]):
-            content.append(get_html_event(event))
+            for event in reversed(events[country]):
+                content.append(get_html_event(event))
 
-        content.append('</div>')
+            content.append('</div>')
 
     return '\n'.join(content)
 
