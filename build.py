@@ -6,10 +6,10 @@ import string
 import shutil
 import datetime
 
-
 DATE_FORMAT = '%Y-%m-%d-%H:%M:%S'
 ICAL_DATE_FORMAT = '%Y%m%dT%H%M%SZ'
 ATOM_DATE_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
+
 
 # Helpers
 
