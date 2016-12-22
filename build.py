@@ -72,7 +72,6 @@ def get_events_from_folder(main_folder):
                 events[country] = []
 
             for file in filter(lambda file: file[-4:] == '.yml', files):
-                print file
                 if file[:4] == '2017' or file[:6] == '201612':
                     event = get_event_from_file(folder, file)
                     event['country'] = country
