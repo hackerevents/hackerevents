@@ -64,5 +64,4 @@ if __name__ == '__main__':
         event_file.write(content)
         event_file.close()
 
-        print "File created at path:"
         print path
