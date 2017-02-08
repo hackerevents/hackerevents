@@ -72,15 +72,14 @@ def get_events_from_folder(main_folder):
                 events[country] = []
 
             for file in filter(lambda file: file[-4:] == '.yml', files):
-                if file[:4] == '2017' or file[:6] == '201612':
-                    event = get_event_from_file(folder, file)
-                    event['country'] = country
-                    end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
-                    date = datetime.datetime.now().replace(
-                        hour=0, minute=0, second=0, microsecond=0)
+                event = get_event_from_file(folder, file)
+                event['country'] = country
+                end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
+                date = datetime.datetime.now().replace(
+                    hour=0, minute=0, second=0, microsecond=0)
 
-                    if (end > date):
-                        events[country].append(event)
+                if (end > date):
+                    events[country].append(event)
 
             events[country] = sorted(
                 events[country],
