@@ -1,4 +1,4 @@
-## HackerEvents
+## HackerEvents
 
 [![Build Status](https://travis-ci.org/hackerevents/hackerevents.svg?branch=master)](https://travis-ci.org/hackerevents/hackerevents)
 
