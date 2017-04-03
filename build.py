@@ -17,7 +17,7 @@ ATOM_DATE_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 def mkdir_p(path):
     try:
         os.makedirs(path)
-    except OSError as exc:
+    except OSError:
         pass
 
 
@@ -120,17 +120,17 @@ event_template = """<div class="w150p">
 def get_html_event(event):
     content = []
     start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
-    event['startday'] = start.strftime("%A")
-    event['startdayn'] = start.strftime("%d")
-    event['startmonth'] = start.strftime("%b")
-    event['startyear'] = start.strftime("%Y")
-    event['address_render'] = event['address'].replace(' - ', '<br />')
-    event['start_render'] = datetime.datetime.strptime(
-        event['start'], DATE_FORMAT).strftime("%A %d %B %H:%M")
-    event['end_render'] = datetime.datetime.strptime(
-        event['end'], DATE_FORMAT).strftime("%A %d %B %H:%M")
-    event['ical_url'] = 'ical/%s/%s.ical' % \
-        (event['country'], event['file_name'])
+    end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
+    event.update({
+        'startday': start.strftime("%A"),
+        'startdayn': start.strftime("%d"),
+        'startmonth': start.strftime("%b"),
+        'startyear': start.strftime("%Y"),
+        'address_render': event['address'].replace(' - ', '<br />'),
+        'start_render': start.strftime("%A %d %B %H:%M"),
+        'end_render': end.strftime("%A %d %B %H:%M"),
+        'ical_url': 'ical/%s/%s.ical' % (event['country'], event['file_name'])
+    })
 
     content.append('<div class="event flex-container">')
     content.append(string.Template(event_template).substitute(event))
@@ -291,7 +291,7 @@ atom_entry_template = """
     <content type="xhtml">
       <div xmlns="http://www.w3.org/1999/xhtml">
         <h2>From $start_render to $end_render</h2>
-        <p>$place<br />$address_render<br />$country</p>
+        <p>$place<br />$address_render<br />$atom_country</p>
         <p>
           <a href="$link">URL</a> -
           <a href="$ical_url">ICAL</a> -
@@ -299,6 +299,10 @@ atom_entry_template = """
         </p>
       </div>
     </content>
+    <start>$start_render</start>
+    <place>$place - $address_render $atom_country</place>
+    <link href="$link"></link>
+    <tag>$atom_tags</tag>
   </entry>
 """
 
@@ -328,9 +332,13 @@ def get_atom_entry(event):
     start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
     added = datetime.datetime.strptime(event['added'], DATE_FORMAT)
     fragment = '-'.join(event['uid'].split('-')[1:])
-    event['atom_id'] = get_atom_id(start, fragment)
-    event['atom_published'] = added.strftime(ATOM_DATE_FORMAT)
-    event['atom_updated'] = added.strftime(ATOM_DATE_FORMAT)
+    event.update({
+        'atom_id': get_atom_id(start, fragment),
+        'atom_published': added.strftime(ATOM_DATE_FORMAT),
+        'atom_updated': added.strftime(ATOM_DATE_FORMAT),
+        'atom_tags': event.get('tags', ''),
+        'atom_country': event.get('country', '').capitalize()
+    })
     return string.Template(atom_entry_template).substitute(event)
 
 
