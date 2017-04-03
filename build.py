@@ -299,9 +299,8 @@ atom_entry_template = """
         </p>
       </div>
     </content>
-    <summary>on $start_render @ $place - $address_render ($atom_country)</summary>
-    <link href="$link"></link>
-    <subtitle>$atom_tags</subtitle>
+    <summary>on $start_render @ $place - $address_render ($atom_country) $atom_tags</summary>
+    <link href="$link"/>
   </entry>
 """
 
