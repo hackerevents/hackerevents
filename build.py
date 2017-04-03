@@ -288,6 +288,8 @@ atom_entry_template = """
     <id>$atom_id</id>
     <published>$atom_published</published>
     <updated>$atom_updated</updated>
+    <link href="$link"/>
+    <summary>on $start_render @ $place - $address_render ($atom_country) $atom_tags</summary>
     <content type="xhtml">
       <div xmlns="http://www.w3.org/1999/xhtml">
         <h2>From $start_render to $end_render</h2>
@@ -299,8 +301,6 @@ atom_entry_template = """
         </p>
       </div>
     </content>
-    <summary>on $start_render @ $place - $address_render ($atom_country) $atom_tags</summary>
-    <link href="$link"/>
   </entry>
 """
 
