@@ -34,6 +34,17 @@ link:
 cfp:""" % (name, start, start, date_added.strftime(DATE_ADDED_FORMAT))
 
 
+def build_event_file(countr, start, name):
+    file_path = get_file_path(country, start, name)
+    content = get_file_content(start, name)
+
+    event_file = open(file_path, "w")
+    event_file.write(content)
+    event_file.close()
+
+    return file_path
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--name', metavar='name',
@@ -45,23 +56,18 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.name is None:
-        print "Name argument is missing"
+        print("Name argument is missing")
 
     elif args.start is None:
-        print "Start argument is missing"
+        print("Start argument is missing")
 
     elif args.country is None:
-        print "Country argument is missing"
+        print("Country argument is missing")
 
     else:
         name = args.name
         start = args.start
         country = args.country
-        path = get_file_path(country, start, name)
-        content = get_file_content(start, name)
+        file_path = build_event_file(country, start, name)
 
-        event_file = open(path, "w")
-        event_file.write(content)
-        event_file.close()
-
-        print path
+        print(file_path)
