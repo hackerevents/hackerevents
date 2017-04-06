@@ -290,7 +290,7 @@ atom_entry_template = """
     <updated>$atom_updated</updated>
     <link href="$link"/>
     <summary>
-        on $start_render @ $place - $address_render ($atom_country) $atom_tags
+        on $start_render @ $place ($atom_country) $atom_tags
     </summary>
     <content type="xhtml">
       <div xmlns="http://www.w3.org/1999/xhtml">
