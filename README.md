@@ -65,6 +65,8 @@ file:
 * Emmanuel (@ehsavoie)
 * Shaiou (@Shaiou)
 * Pierre (@pierrevdk)
+* Christophe (@descl)
+* @h0xt0n
 
 ### Image credits
 
