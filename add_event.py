@@ -31,7 +31,8 @@ added: %s
 place:
 address:
 link:
-cfp:""" % (name, start, start, date_added.strftime(DATE_ADDED_FORMAT))
+cfp:
+tags:""" % (name, start, start, date_added.strftime(DATE_ADDED_FORMAT))
 
 
 def build_event_file(countr, start, name):
