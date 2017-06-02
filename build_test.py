@@ -68,6 +68,8 @@ class TestBuild(unittest.TestCase):
         folder = os.path.join(event_folder, 'belgium')
         event = build.get_event_from_file(folder, '20270204-fosdem.yml')
         event['country'] = 'belgium'
+
+
         self.assertEqual(build.get_html_event(event), """<div class="event flex-container">
 <div class="w150p">
 <div class="main-date">
@@ -77,7 +79,8 @@ class TestBuild(unittest.TestCase):
     <p class="year">2027</p>
 </div>
 </div>
-<div class="flex-item-fluid"><h3>FOSDEM' 27</h3>
+<div class="flex-item-fluid">
+<h3><a href="events/belgium/2027/02/04/fosdem-27.html">FOSDEM' 27</a></h3>
 <p class="date">From Thursday 04 February 10:00 to Friday 05 February 18:00</p>
 <p class="address">ULB<br />Avenue Franklin Roosevelt 50 1050 Bruxelles</p>
 <p class=links>
@@ -107,6 +110,7 @@ X-WR-CALNAME:Hacker Events in belgium""")
         event = build.get_event_from_file(folder, '20270204-fosdem.yml')
         event['country'] = 'belgium'
         now = datetime.datetime.now()
+
         self.assertEqual(build.get_ical_event(event, now), '''BEGIN:VEVENT
 UID: 20270204-fosdem
 DTSTAMP:%s
@@ -116,6 +120,7 @@ LOCATION: ULB - Avenue Franklin Roosevelt 50 1050 Bruxelles
 SUMMARY:FOSDEM' 27
 URL:https://fosdem.org/
 END:VEVENT''' % now.strftime(build.ICAL_DATE_FORMAT))
+
 
     def test_build_ical_files(self):
         pass

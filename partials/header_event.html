@@ -5,18 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>HackerEvents: the list of all your upcoming software events!</title>
-    <meta name="description" content="HackerEvents provide you with lists of all upcoming events about software and free culture.">
-    <meta name="keywords" content="Hacker meetup event software workshop">
+    <title>HackerEvents: $name</title>
+    <meta name="description" content="$name on $start_render @ $place ($country).">
+    <meta name="keywords" content="hacker meetup event software workshop">
     <link rel="icon" type="image/png" href="./images/favicon.png">
-    <meta property="og:title" content="HackerEvents: the list of all your upcoming Hacker events!">
-    <meta property="og:description" content="Hacker Events provide you with by country lists of all upcoming events about software and free culture.">
+    <meta property="og:title" content="HackerEvents: $name">
+    <meta property="og:description" content="$name on $start_render @ $place ($country).">
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content="">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:url" content="https://www.hackerevents.org">
-    <meta name="twitter:title" content="HackerEvents: the list of all your upcoming Hacker events!">
-    <meta name="twitter:description" content="Hacker Events provide you with by country lists of all upcoming events about software and free culture. ">
+    <meta name="twitter:title" content="HackerEvents: $name">
+    <meta name="twitter:description" content="$name on $start_render @ $place ($country).">
     <meta name="twitter:image" content="./assets/logo.png">
 
     <link rel="icon" type="image/png" href="./assets/favicon.ico">
@@ -31,10 +31,11 @@
 
   <body>
     <header class="main flex-container">
-        <div class="logo flex-container-v">
-
-            <img src="./assets/logo.png">
-        </div>
+        <a href="/">
+            <div class="logo flex-container-v">
+                <img src="./assets/logo.png">
+            </div>
+        </a>
         <div class="text flex-item-fluid">
         <h1>HackerEvents</h1>
         <p class="description">Curated list of upcoming software related events: meetups, conferences and workshops.</p>
