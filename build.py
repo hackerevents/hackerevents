@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import os
+import re
 import string
 import shutil
 import datetime
+import unicodedata
 
 DATE_FORMAT = '%Y-%m-%d-%H:%M:%S'
 ICAL_DATE_FORMAT = '%Y%m%dT%H%M%SZ'
@@ -37,6 +39,14 @@ def write_file(folder, file_name, content):
     file = open(os.path.join(folder, file_name), 'w')
     file.write('\n'.join(content))
     file.close()
+
+
+# Shortcut for python file reading.
+def read_file(folder, file_name):
+    file_descriptor = open(os.path.join(folder, file_name))
+    content = file_descriptor.read()
+    file_descriptor.close()
+    return content
 
 
 # File data extraction
@@ -108,7 +118,8 @@ event_template = """<div class="w150p">
     <p class="year">$startyear</p>
 </div>
 </div>
-<div class="flex-item-fluid"><h3>$name</h3>
+<div class="flex-item-fluid">
+<h3><a href="$permalink">$name</a></h3>
 <p class="date">From $start_render to $end_render</p>
 <p class="address">$place<br />$address_render</p>
 <p class=links>
@@ -121,6 +132,11 @@ def get_html_event(event):
     content = []
     start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
     end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
+    permalink = os.path.join(
+        'events',
+        get_html_event_folder(event['country'], event),
+        get_html_event_file_name(event)
+    )
     event.update({
         'startday': start.strftime("%A"),
         'startdayn': start.strftime("%d"),
@@ -129,7 +145,8 @@ def get_html_event(event):
         'address_render': event['address'].replace(' - ', '<br />'),
         'start_render': start.strftime("%A %d %B %H:%M"),
         'end_render': end.strftime("%A %d %B %H:%M"),
-        'ical_url': 'ical/%s/%s.ical' % (event['country'], event['file_name'])
+        'ical_url': 'ical/%s/%s.ical' % (event['country'], event['file_name']),
+        'permalink': permalink
     })
 
     content.append('<div class="event flex-container">')
@@ -190,6 +207,75 @@ def build_index_page(main_folder, events):
 
     mkdir_p(build_folder)
     write_file(build_folder, 'index.html', content)
+
+
+# Single event HTML rendering
+
+
+def build_event_pages(main_folder, events):
+    partial_folder = os.path.join(main_folder, 'partials')
+    template_folder = os.path.join(main_folder, 'templates')
+    build_folder = os.path.join(main_folder, 'build', 'events')
+
+    single_event_template = make_event_template(
+        partial_folder,
+        template_folder
+    )
+
+    for country in events.keys():
+        country_folder = os.path.join(build_folder, country)
+        build_country_events_page(
+            country_folder,
+            events[country],
+            single_event_template
+        )
+
+
+def make_event_template(partial_folder, template_folder):
+    return "\n".join([
+        read_file(partial_folder, 'header_event.html'),
+        read_file(template_folder, 'event.html'),
+        read_file(partial_folder, 'footer.html')
+    ])
+
+
+def build_country_events_page(country_folder, events, single_event_template):
+    for event in events:
+        build_event_page(country_folder, event, single_event_template)
+
+
+def build_event_page(country_folder, event, single_event_template):
+    folder = make_html_event_folder(country_folder, event)
+    file_name = get_html_event_file_name(event)
+    template = string.Template(single_event_template)
+    html_content = template.substitute(event)
+    write_file(folder, file_name, [html_content])
+
+
+def make_html_event_folder(country_folder, event):
+    folder = get_html_event_folder(country_folder, event)
+    mkdir_p(folder)
+    return folder
+
+
+def get_html_event_folder(country_folder, event):
+    start = event['start'][:10].replace('-', '/')
+    return os.path.join(country_folder, start)
+
+
+def get_html_event_file_name(event):
+    event_name = event['name']
+    if hasattr(event_name, 'decode'):
+        event_name = event_name.decode('utf-8')
+    file_name = unicodedata.normalize('NFKD', event_name) \
+                           .encode('ascii', 'ignore')
+    if type(file_name) == bytes and type(file_name) != str:
+        file_name = file_name.decode('utf-8')
+    file_name = file_name.lower()
+    file_name = re.sub(r'[^a-z0-9]+', '-', file_name).strip('-')
+    file_name = re.sub(r'[-]+', '-', file_name)
+
+    return '%s.html' % file_name
 
 
 # Ical rendering
@@ -377,6 +463,7 @@ if __name__ == '__main__':
 
     events = get_events_from_folder(main_folder)
     build_index_page(main_folder, events)
+    build_event_pages(main_folder, events)
     build_ical_files(main_folder, events)
     build_atom_feed(main_folder, events)
 
