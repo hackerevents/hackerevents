@@ -59,7 +59,7 @@ file:
 * Nicolas (@nikaro)
 * Pierre (@catwell)
 
-#### Events
+#### Events
 
 * Bryan (@chreekat)
 * Emmanuel (@ehsavoie)
@@ -67,6 +67,7 @@ file:
 * Pierre (@pierrevdk)
 * Christophe (@descl)
 * @h0xt0n
+* Nicolas Charlot (@charlot)
 
 ### Image credits
 
