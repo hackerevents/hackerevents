@@ -32,7 +32,7 @@ class TestBuild(unittest.TestCase):
 
     def test_get_events_from_folder(self):
         base_folder = os.path.join(main_folder, 'fixtures')
-        events = build.get_events_from_folder(base_folder)
+        (events, archives) = build.get_events_from_folder(base_folder)
         countries = sorted(events.keys())
         self.assertEqual(['belgium', 'china', 'france', 'germany'], countries)
 

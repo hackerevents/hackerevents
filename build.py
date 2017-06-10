@@ -72,7 +72,10 @@ def get_event_from_file(folder, file):
 # list event dictionnary.
 def get_events_from_folder(main_folder):
     events = {}
+    archives = {}
     event_folder = os.path.join(main_folder, 'events')
+    date = datetime.datetime.now().replace(
+        hour=0, minute=0, second=0, microsecond=0)
 
     for (folder, folders, files) in os.walk(event_folder):
 
@@ -80,16 +83,17 @@ def get_events_from_folder(main_folder):
             country = os.path.basename(folder)
             if country not in events:
                 events[country] = []
+                archives[country] = []
 
             for file in filter(lambda file: file[-4:] == '.yml', files):
                 event = get_event_from_file(folder, file)
                 event['country'] = country
                 end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
-                date = datetime.datetime.now().replace(
-                    hour=0, minute=0, second=0, microsecond=0)
 
                 if (end > date):
                     events[country].append(event)
+                else:
+                    archives[country].append(event)
 
             events[country] = sorted(
                 events[country],
@@ -97,7 +101,7 @@ def get_events_from_folder(main_folder):
                 reverse=True
             )
 
-    return events
+    return (events, archives)
 
 
 # HTML rendering
@@ -128,8 +132,7 @@ event_template = """<div class="w150p">
 <a href="http://www.openstreetmap.org/search?query=$address">MAP</a>"""
 
 
-def get_html_event(event):
-    content = []
+def prepare_event(event):
     start = datetime.datetime.strptime(event['start'], DATE_FORMAT)
     end = datetime.datetime.strptime(event['end'], DATE_FORMAT)
     permalink = os.path.join(
@@ -137,7 +140,9 @@ def get_html_event(event):
         get_html_event_folder(event['country'], event),
         get_html_event_file_name(event)
     )
+
     event.update({
+        'short_start': event["start"][:10],
         'startday': start.strftime("%A"),
         'startdayn': start.strftime("%d"),
         'startmonth': start.strftime("%b"),
@@ -148,7 +153,12 @@ def get_html_event(event):
         'ical_url': 'ical/%s/%s.ical' % (event['country'], event['file_name']),
         'permalink': permalink
     })
+    return event
 
+
+def get_html_event(event):
+    content = []
+    event = prepare_event(event)
     content.append('<div class="event flex-container">')
     content.append(string.Template(event_template).substitute(event))
     if 'cfp' in event:
@@ -248,6 +258,7 @@ def build_event_page(country_folder, event, single_event_template):
     folder = make_html_event_folder(country_folder, event)
     file_name = get_html_event_file_name(event)
     template = string.Template(single_event_template)
+    event = prepare_event(event)
     html_content = template.substitute(event)
     write_file(folder, file_name, [html_content])
 
@@ -446,6 +457,61 @@ def build_atom_feed(main_folder, events):
     mkdir_p(build_folder)
     write_file(build_folder, 'feed.atom', content)
 
+# Archives page
+
+archive_title = "<h1>Archives</h1>"
+archive_line_template = """
+<li><a href="$permalink">$short_start: $name at $place ($country)</a></p>
+"""
+
+
+def build_archive_page(main_folder, events):
+    content = []
+    build_folder = os.path.join(main_folder, 'build')
+
+    content.append(get_html_header(main_folder))
+    content.append(archive_title)
+    content += build_archive_list(events)
+    content.append(get_html_footer(main_folder))
+
+    mkdir_p(build_folder)
+    write_file(build_folder, 'archives.html', content)
+
+
+def get_html_header(main_folder):
+    partial_folder = os.path.join(main_folder, 'partials')
+    return read_file(partial_folder, 'header.html')
+
+
+def get_html_footer(main_folder):
+    partial_folder = os.path.join(main_folder, 'partials')
+    return read_file(partial_folder, 'footer.html')
+
+
+def build_archive_list(events):
+    content = ["<ul>"]
+    archive_line = string.Template(archive_line_template)
+
+    for event in prepare_archive_list(events):
+        event = prepare_event(event)
+        content.append(archive_line.substitute(event))
+
+    content.append("</ul>")
+
+    return content
+
+
+def prepare_archive_list(events):
+    event_list = []
+    for country in events:
+        event_list += events[country]
+
+    return sorted(
+        event_list,
+        key=lambda event: event["start"],
+        reverse=True
+    )
+
 
 # Main script
 
@@ -461,9 +527,11 @@ if __name__ == '__main__':
 
     print("Start build...")
 
-    events = get_events_from_folder(main_folder)
+    (events, archives) = get_events_from_folder(main_folder)
     build_index_page(main_folder, events)
     build_event_pages(main_folder, events)
+    build_event_pages(main_folder, archives)
+    build_archive_page(main_folder, archives)
     build_ical_files(main_folder, events)
     build_atom_feed(main_folder, events)
 
