@@ -1,8 +1,8 @@
-## HackerEvents
+## HackerEvents ->
 
 [![Build Status](https://travis-ci.org/hackerevents/hackerevents.svg?branch=master)](https://travis-ci.org/hackerevents/hackerevents)
 
-### Goals
+### Goals ->
 
 The aim of this project is to provide:
 
@@ -15,9 +15,9 @@ information about the event I was interested in. I hope it will be useful to
 you. My goal is to make it a website maintained by a community, so feel free to
 participate!
 
-### How to contribute
+### How to contribute?
 
-#### Add an event
+#### Add an event ->
 
 Feel free to add your events to the website. For that you just have to add a file in the folder corresponding to the event country and open a PR accordingly.
 
@@ -42,7 +42,7 @@ The file is located at `events/belgium`.
 
 Once your event added, the website will be rebuilt. 
 
-#### Test your changes
+#### Test your changes ->
 
 You can test your changes by building the website and open the generated index
 file:
@@ -53,13 +53,13 @@ file:
 
 ### Contributors
 
-#### Code
+#### Code ->
 
 * Frank (@frankrousseau)
 * Nicolas (@nikaro)
 * Pierre (@catwell)
 
-#### Events
+#### Events ->
 
 * Bryan (@chreekat)
 * Emmanuel (@ehsavoie)
@@ -69,6 +69,6 @@ file:
 * @h0xt0n
 * Nicolas Charlot (@charlot)
 
-### Image credits
+### Image credits ->
 
 Logo made by LSE Design: https://www.iconfinder.com/lsedesigns
